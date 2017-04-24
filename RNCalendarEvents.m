@@ -1,6 +1,6 @@
 #import "RNCalendarEvents.h"
-#import <React/RCTConvert.h>
-#import <React/RCTUtils.h>
+#import "RCTConvert.h"
+#import "RCTUtils.h"
 #import <EventKit/EventKit.h>
 
 @interface RNCalendarEvents ()
@@ -587,7 +587,7 @@ RCT_EXPORT_METHOD(removeEvent:(NSString *)eventId resolver:(RCTPromiseResolveBlo
 RCT_EXPORT_METHOD(removeFutureEvents:(NSString *)eventId resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
     NSDictionary *response = [self deleteEvent:eventId span:EKSpanFutureEvents];
-    
+
     if ([response valueForKey:@"success"] != [NSNull null]) {
         resolve([response valueForKey:@"success"]);
     } else {
